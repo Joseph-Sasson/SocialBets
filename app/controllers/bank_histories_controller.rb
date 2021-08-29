@@ -1,0 +1,2 @@
+class BankHistoriesController < ApplicationController
+end

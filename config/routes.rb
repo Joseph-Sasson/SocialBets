@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :bank_histories
+  resources :bank_transactions
   resources :messages
   resources :messengers
   resources :betslips
