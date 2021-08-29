@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
   
   if (!user) {
     return (
