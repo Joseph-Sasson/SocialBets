@@ -12,7 +12,7 @@ function App() {
           <nav>
             <div>
               <Link to={"/"}>
-                SocialBookie
+                SocialBets
               </Link>
               <div>
                 <ul>
@@ -60,7 +60,7 @@ function App() {
         <nav>
           <div>
             <Link to={"/"}>
-              SocialBookie
+              SocialBets
             </Link>
             <div>
               <ul>
