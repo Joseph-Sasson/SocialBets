@@ -2,8 +2,29 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import Login from "./component/Login";
+import Signup from "./component/Signup";
+import Home from "./component/Home";
+
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogout() {
+    if (window.confirm("Are you sure you want to logout?"))
+      fetch("/logout", { method: "DELETE" }).then((r) => {
+        if (r.ok) {
+          setUser(null);
+        }
+      });
+  }
   
   if (!user) {
     return (
@@ -16,6 +37,11 @@ function App() {
               </Link>
               <div>
                 <ul>
+                  <li>
+                    <Link to={"/home"}>
+                      Home
+                    </Link>
+                  </li>  
                   <li>
                     <Link to={"/login"}>
                       Login
@@ -35,16 +61,20 @@ function App() {
             <div>
               <Switch>
                 <Route
+                  path="/home"
+                  component={() => (<Home />)}
+                />
+                <Route
                   path="/login"
-                  // component={() => <Login />}
+                  component={() => <Login setUser={setUser} />}
                 />
                 <Route
                   path="/signup"
-                  // component={() => <Signup />}
+                  component={() => <Signup setUser={setUser} />}
                 />
                 <Route 
                   path="/"
-                  // component={() => <Login />}
+                  component={() => <Login setUser={setUser} />}
                 />
               </Switch>
             </div>
@@ -71,11 +101,11 @@ function App() {
                 </li>
                 <li>
                   <Link to={"/profile"}>
-                    Profile
+                    My Account
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/"}>
+                  <Link to={"/"} onClick={handleLogout}>
                     Logout
                   </Link>
                 </li>
@@ -89,15 +119,15 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                // component={() => (<Home />)}
+                component={() => (<Home />)}
               />
               <Route
                 path="/profile"
-                // component={() => (<Profile />)}
+                // component={() => (<Account />)}
               />
               <Route
                 path="/"
-                // component={() => (<Home />)}
+                component={() => (<Home />)}
               />
             </Switch>
           </div>
