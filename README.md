@@ -4,6 +4,8 @@ SocialBets is an interactive sports betting website with a social side.
 ## Description
 SocialBets allows users to place bets on sports as well as chat with friends and collegues about which bets they like and which they don't. A user will have access to a messenger which they can choose who to chat with. A user can deposit money into their account and withdraw from there account when done.
 
+## Application Information
+
 ### Tables
 * Users
 * Bets
@@ -26,3 +28,35 @@ SocialBets allows users to place bets on sports as well as chat with friends and
  ### Stretch tables
  * Messenger
  * Messages
+
+ ### Models
+ * User
+    * Has many betslips
+    * Has many bets through betslips
+    * Has many bank histories
+    * Has many bank transactions through bank histories
+ * Bets
+    * Has many betslips
+    * Has many users through betslips
+ * Betslip
+    * Belongs to user
+    * Belongs to bet
+ * Bank Transaction
+    * Has user through bank history
+ * Bank history
+    * Belongs to user
+    * Belongs to bank transaction
+
+ ### Validations
+ * User
+    * Must have a name
+    * Must have a unique email
+    * Password confirmation and must match password
+
+ ### Stretch Models
+ * Message
+ * Messenger
+
+ ### Stretch Validations
+ * Message
+ * Messenger
