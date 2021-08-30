@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function Account({user, setUser}){
+  const [errors, setErrors] = useState([]);
 
-  console.log(user)
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this account?"))
+      fetch(`/users/${user.id}`, {
+        method: "DELETE",
+      }).then((r) => {
+        if (r.ok) {
+          setUser(null)
+    }})};
 
   return (
     <div>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
-      <p>Bank: ${user.bank}</p>
+      <h2>My Account</h2>
+      <ul>
+        <li>Name: {user.name}</li>
+        <li>Email Address: {user.email}</li>
+        <li>Bank: {user.bank}</li>
+      </ul>
+      <button onClick={handleDelete}>Delete Account</button>
     </div>
   )
 }
