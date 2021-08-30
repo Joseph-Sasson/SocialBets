@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./component/Login";
 import Signup from "./component/Signup";
 import Home from "./component/Home";
+import Account from "./component/Account";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -100,7 +101,7 @@ function App() {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/profile"}>
+                  <Link to={"/account"}>
                     My Account
                   </Link>
                 </li>
@@ -122,8 +123,8 @@ function App() {
                 component={() => (<Home />)}
               />
               <Route
-                path="/profile"
-                // component={() => (<Account />)}
+                path="/account"
+                component={() => (<Account user={user} setUser={setUser} />)}
               />
               <Route
                 path="/"

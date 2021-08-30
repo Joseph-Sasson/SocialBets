@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_134422) do
   create_table "betslips", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "bet_id", null: false
+    t.boolean "winner"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bet_id"], name: "index_betslips_on_bet_id"
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_134422) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.money "bank", scale: 2
+    t.money "bank", scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
