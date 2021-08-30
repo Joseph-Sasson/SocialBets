@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function Account({user, setUser}){
-  const [errors, setErrors] = useState([]);
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this account?"))

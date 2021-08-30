@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :messengers
   resources :betslips
-  resources :bets
+  resources :bets, only: [:index]
   resources :users
 
   get "/me", to: "users#show"
