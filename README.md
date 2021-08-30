@@ -14,7 +14,6 @@ SocialBets allows users to place bets on sports as well as chat with friends and
 * bank_transaction
 
 ### MVP
-* Listing bets on home page and persisting them
 * User should be able to add bet to betslip
 * User should be able to add/remove money to/from bank
 * User should be able to check how much money is in the bank

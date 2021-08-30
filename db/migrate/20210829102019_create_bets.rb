@@ -1,7 +1,7 @@
 class CreateBets < ActiveRecord::Migration[6.1]
   def change
     create_table :bets do |t|
-      t.string :sports_title
+      t.string :sport_title
       t.string :date
       t.string :home_team
       t.string :away_team
