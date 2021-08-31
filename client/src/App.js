@@ -30,7 +30,8 @@ function App() {
 
   const addHomeToSlip =(bet)=>{
     if (window.confirm(`Would you like to add ${bet.home_team} to betslip?`))
-      console.log(bet.home_team, bet.home_odds)
+      console.log(bet.away_team, bet.away_odds)
+
   }
 
   const addAwayToSlip =(bet)=>{
