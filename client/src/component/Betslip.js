@@ -11,7 +11,7 @@ function Betslip({betslip}){
       <div>{betslip.bet.date}</div>
       <div>{betslip.bet.home_team}&ensp;{betslip.bet.home_odds}</div>
       <div>Wager: ${betslip.wager}&emsp;To Win:${betslip.winnings}</div>
-      {<div>Result:&ensp;{betslip.winner ? "WIN" : "LOSS"}</div>}
+      {<div>Result:&ensp;{betslip.winner ? "WIN" : "PENDING"}</div>}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Bets from './Bets';
 
-function Home({home, away}){
+function Home({home, away, submit, errors, wagerForm, setWagerForm}){
   const [bets, setBets] = useState([])
 
   useEffect(()=>{
@@ -12,7 +12,7 @@ function Home({home, away}){
 
   return (
     <div className="row">
-      {bets.map(bet=> {return <Bets key={bet.id} bet={bet} home={home} away={away} />})}
+      {bets.map(bet=> {return <Bets key={bet.id} bet={bet} home={home} away={away} submit={submit} errors={errors} wagerForm={wagerForm} setWagerForm={setWagerForm} />})}
     </div>
   )
 }
