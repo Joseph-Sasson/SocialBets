@@ -6,7 +6,7 @@ joseph = User.create(name: "joseph", email: "joseph@gmail.com", password: "flati
 puts "🌱 Seeding users..."
 
 one = Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Andy Murray", away_team: "Stefanos Tsitsipas", home_odds: 750, away_odds: -1250)
-Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Mikhail Kukushkin", away_team: "Pablo Andujar", home_odds: -200, away_odds: 170)
+two = Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Mikhail Kukushkin", away_team: "Pablo Andujar", home_odds: -200, away_odds: 170)
 Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Daniil Medvedev", away_team: "Richard Gasquet", home_odds: -3000, away_odds: 1000)
 Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Nick Kyrgios", away_team: "Roberto Bautista Agut", home_odds: 150, away_odds: -200)
 Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Brandon Nakashima", away_team: "John Isner", home_odds: 140, away_odds: -160)
@@ -44,6 +44,7 @@ Bet.create(sports_title: "NFL Football", date: "Monday September 13th", home_tea
 
 puts "🌱 Seeding betslip..."
 
-first = Betslip.create(user_id: test.id, bet_id: one.id, wager: 100, winnings: 200)
+Betslip.create(user_id: test.id, bet_id: one.id, wager: 100, winnings: 200)
+Betslip.create(user_id: test.id, bet_id: two.id, wager: 100, winnings: 150)
 
 puts "✅ Done seeding!" 

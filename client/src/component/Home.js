@@ -7,7 +7,7 @@ function Home({home, away}){
   useEffect(()=>{
     fetch("/bets")
     .then((res)=>res.json())
-    .then(data=>setBets(data.odds))
+    .then(data=>setBets(data))
   },[])
 
   return (

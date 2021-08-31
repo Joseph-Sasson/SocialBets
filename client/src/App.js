@@ -6,7 +6,7 @@ import Login from "./component/Login";
 import Signup from "./component/Signup";
 import Home from "./component/Home";
 import Account from "./component/Account";
-import Betslip from "./component/Betslip";
+import MyBets from "./component/MyBets";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -117,7 +117,7 @@ function App() {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"/betslip"}>
+                  <Link to={"/mybets"}>
                     My Bets
                   </Link>
                 </li>
@@ -144,8 +144,8 @@ function App() {
                 component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} />)}
               />
               <Route
-                path="/betslip"
-                component={() => (<Betslip />)}
+                path="/mybets"
+                component={() => (<MyBets />)}
               />
               <Route
                 path="/account"
