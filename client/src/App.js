@@ -10,8 +10,6 @@ import MyBets from "./component/MyBets";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [errors, setErrors] = useState([]);
-
   
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -38,21 +36,14 @@ function App() {
     // console.log(bet.away_team, bet.away_odds)
   }
 
-  const handleSubmit = (e, bet) => {
-    e.preventDefault();
-    setErrors([]);
-    if (window.confirm("Are you sure you want to place this wager?"))
-      console.log(bet)
-  };
-
   const mustLogin =(e)=>{
     alert("You must be logged in to place a bet!")
   }
 
-  const mustLoginSubmit =(e)=>{
-    e.preventDefault()
-    alert("You must be logged in to place a bet!")
-  }
+  // const mustLoginSubmit =(e)=>{
+  //   e.preventDefault()
+  //   alert("You must be logged in to place a bet!")
+  // }
   
   if (!user) {
     return (
@@ -90,7 +81,7 @@ function App() {
               <Switch>
                 <Route
                   path="/home"
-                  component={() => (<Home home={mustLogin} away={mustLogin} submit={mustLoginSubmit} />)}
+                  component={() => (<Home home={mustLogin} away={mustLogin} />)}
                 />
                 <Route
                   path="/login"
@@ -152,7 +143,7 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} />)}
               />
               <Route
                 path="/mybets"
@@ -164,7 +155,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} />)}
               />
             </Switch>
           </div>
