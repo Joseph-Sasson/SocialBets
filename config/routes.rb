@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :bank_transactions
   resources :messages
   resources :messengers
-  resources :betslips
+  resources :betslips, only: [:index, :create]
   resources :bets, only: [:index]
   resources :users
 

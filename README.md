@@ -51,6 +51,8 @@ SocialBets allows users to place bets on sports as well as chat with friends and
     * Must have a name
     * Must have a unique email
     * Password confirmation and must match password
+ * Betslip
+    * Must have a wager
 
  ### Stretch Models
  * Message
