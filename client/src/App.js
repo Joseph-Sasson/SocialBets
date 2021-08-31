@@ -11,10 +11,7 @@ import MyBets from "./component/MyBets";
 function App() {
   const [user, setUser] = useState(null);
   const [errors, setErrors] = useState([]);
-  const [wagerForm, setWagerForm] = useState({
-    wager: '',
-    winnings: ""
-  })
+
   
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -41,11 +38,11 @@ function App() {
     // console.log(bet.away_team, bet.away_odds)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, bet) => {
     e.preventDefault();
     setErrors([]);
     if (window.confirm("Are you sure you want to place this wager?"))
-      console.log(wagerForm)
+      console.log(bet)
   };
 
   const mustLogin =(e)=>{
@@ -93,7 +90,7 @@ function App() {
               <Switch>
                 <Route
                   path="/home"
-                  component={() => (<Home home={mustLogin} away={mustLogin} submit={mustLoginSubmit} wagerForm={wagerForm} setWagerForm={setWagerForm} />)}
+                  component={() => (<Home home={mustLogin} away={mustLogin} submit={mustLoginSubmit} />)}
                 />
                 <Route
                   path="/login"
@@ -155,7 +152,7 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} wagerForm={wagerForm} setWagerForm={setWagerForm} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} />)}
               />
               <Route
                 path="/mybets"
@@ -167,7 +164,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} wagerForm={wagerForm} setWagerForm={setWagerForm} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} submit={handleSubmit} errors={errors} />)}
               />
             </Switch>
           </div>
