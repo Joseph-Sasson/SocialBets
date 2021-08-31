@@ -27,6 +27,20 @@ function App() {
         }
       });
   }
+
+  const addHomeToSlip =(bet)=>{
+    if (window.confirm(`Would you like to add ${bet.home_team} to betslip?`))
+      console.log(bet.home_team, bet.home_odds)
+  }
+
+  const addAwayToSlip =(bet)=>{
+    if (window.confirm(`Would you like to add ${bet.away_team} to betslip?`))
+      console.log(bet.away_team, bet.away_odds)
+  }
+
+  const mustLogin =()=>{
+    alert("You must be logged in to place a bet!")
+  }
   
   if (!user) {
     return (
@@ -64,7 +78,7 @@ function App() {
               <Switch>
                 <Route
                   path="/home"
-                  component={() => (<Home />)}
+                  component={() => (<Home home={mustLogin} away={mustLogin} />)}
                 />
                 <Route
                   path="/login"
@@ -126,7 +140,7 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} />)}
               />
               <Route
                 path="/betslip"
@@ -138,7 +152,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} />)}
               />
             </Switch>
           </div>
