@@ -41,7 +41,7 @@ function Account({user, setUser}){
       <ul>
         <li>Name: {user.name}</li>
         <li>Email Address: {user.email}</li>
-        <li>Bank: ${user.bank}</li>
+        <li>Bank: ${parseInt(user.bank)}</li>
         <input onChange={(e)=>setAmount(e.target.value)} type="number" min="0"/>
         <button onClick={handleDeposit}>Deposit</button>
         <button onClick={handleWithdraw}>Withdraw</button>

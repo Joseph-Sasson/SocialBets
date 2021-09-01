@@ -12,8 +12,12 @@ class BetslipsController < ApplicationController
     user = User.find_by(id: session[:user_id])
     betslip.user_id = user.id
     betslip.bet_id = params[:bet]
-    betslip.save
-    render json: betslip, status: :created
+    if betslip.wager.to_i <= 0
+      render json: {errors: "You must wager atleast $1!"}
+    else
+      betslip.save
+      render json: betslip, status: :created
+    end
   end
 
   private
