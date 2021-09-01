@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import "../css/bets.css"
+import BetForm from './BetForm';
 
 function Bets({bet, home, away, odds}){
+  const [toggleForm, setToggleForm] = useState(false)
   const [homeAway, setHomeAway] = useState([])
   const [errors, setErrors] = useState([]);
   const [winnings, setWinnings] = useState('')
@@ -25,11 +27,20 @@ function Bets({bet, home, away, odds}){
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
       home(bet)
       setHomeAway("home_odds")
+      setAmount('')
+      if (toggleForm === false) {
+        setToggleForm(true)
+      }
     } else if ((e.target.name === 'away' && homeAway !== 'away_odds')) {
       away(bet)
       setHomeAway("away_odds")
+      setAmount('')
+      if (toggleForm === false) {
+        setToggleForm(true)
+      }
     } else {
       setHomeAway('')
+      setToggleForm(!toggleForm)
     }
   }
 
@@ -76,24 +87,7 @@ function Bets({bet, home, away, odds}){
       <div>{bet.date}</div>
       <button onClick={handleClick} name="home" style={homeAway === 'home_odds' ? {backgroundColor: "green"} : null}>{bet.home_team}<br/>{bet.home_odds}</button>
       <button onClick={handleClick} name="away" style={homeAway === 'away_odds' ? {backgroundColor: "green"} : null}>{bet.away_team}<br/>{bet.away_odds}</button>
-      <form onSubmit={(e) => handleSubmit(e, bet)}>
-        <label>Wager:
-        <input
-          type="number"
-          min="0"
-          placeholder="Enter bet amount"
-          name="wager"
-          value={amount}
-          onChange={homeAway ? pseudoBackend : handleChoose}
-        /></label>
-      </form>
-      <form onSubmit={(e) => handleSubmit(e, bet)}>
-        <label>To Win:</label>
-        <span>{amount ? winnings : " "}</span>
-      <br/>
-      <input type='submit' />
-      </form>
-      <div>{errors}</div>
+      {toggleForm ? <BetForm handleSubmit={handleSubmit} amount={amount} homeAway={homeAway} pseudoBackend={pseudoBackend} handleChoose={handleChoose} winnings={winnings} errors={errors} bet={bet}/> : false}
     </div>
   )
 }
