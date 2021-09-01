@@ -37,14 +37,9 @@ function App() {
     console.log(bet)
   }
 
-  const mustLogin =(bet)=>{
+  const mustLogin =()=>{
     alert("You must be logged in to place a bet!")
   }
-
-  // const mustLoginSubmit =(e)=>{
-  //   e.preventDefault()
-  //   alert("You must be logged in to place a bet!")
-  // }
   
   if (!user) {
     return (
