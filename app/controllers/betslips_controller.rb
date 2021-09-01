@@ -11,7 +11,6 @@ class BetslipsController < ApplicationController
     betslip = Betslip.create(betslip_params)
     user = User.find_by(id: session[:user_id])
     betslip.user_id = user.id
-    betslip.bet_id = params[:bet]
     if betslip.wager.to_i <= 0
       render json: {errors: "You must wager atleast $1!"}
     else
@@ -23,7 +22,7 @@ class BetslipsController < ApplicationController
   private
 
   def betslip_params
-    params.permit(:wager, :winnings)
+    params.permit(:wager, :winnings, :bet_id)
   end
   def authorize
     render json: {errors: "You must be logged in to place a bet!"}, status: :unauthorized unless session.include? :user_id

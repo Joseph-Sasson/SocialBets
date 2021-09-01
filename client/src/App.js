@@ -10,7 +10,6 @@ import MyBets from "./component/MyBets";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [odds, setOdds] = useState(null)
   
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -30,11 +29,11 @@ function App() {
   }
 
   const addHomeToSlip =(bet)=>{
-    console.log(bet)
+    // console.log(bet)
   }
 
   const addAwayToSlip =(bet)=>{
-    console.log(bet)
+    // console.log(bet)
   }
 
   const mustLogin =()=>{
@@ -139,7 +138,7 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} odds={odds}/>)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} />)}
               />
               <Route
                 path="/mybets"
@@ -151,7 +150,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} odds={odds} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip}  />)}
               />
             </Switch>
           </div>

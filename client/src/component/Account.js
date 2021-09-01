@@ -18,7 +18,8 @@ function Account({user, setUser}){
         method: 'PATCH',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(amount)
-      }).then(window.location.reload(false))
+      }).then((r)=>r.json())
+      .then(setUser)
     }
 
     const handleWithdraw=()=>{
@@ -28,7 +29,7 @@ function Account({user, setUser}){
         body: JSON.stringify(amount)
       }).then((r) => {
         if (r.ok) {
-          r.json().then(window.location.reload(false))
+          r.json().then(setUser)
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

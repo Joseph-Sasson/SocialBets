@@ -2,26 +2,12 @@ import React, {useState} from 'react';
 import "../css/bets.css"
 import BetForm from './BetForm';
 
-function Bets({bet, home, away, odds}){
+function Bets({bet, home, away}){
   const [toggleForm, setToggleForm] = useState(false)
   const [homeAway, setHomeAway] = useState([])
   const [errors, setErrors] = useState([]);
   const [winnings, setWinnings] = useState('')
   const [amount, setAmount] = useState('')
-  const [wagerForm, setWagerForm] = useState({
-    bet: bet.id,
-    wager: amount,
-    winnings: winnings
-  })
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    // setWagerForm({
-    //   ...wagerForm,
-    //   [name]: value,
-    // });
-  };
 
   const handleClick = (e) =>{
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
@@ -46,18 +32,8 @@ function Bets({bet, home, away, odds}){
 
   const pseudoBackend = async (e) => {
     setAmount(e.target.value)
-    // console.log("Bet:", bet.id)
-    // console.log("HomeAway:", homeAway)
-    // console.log("Amount:", e.target.value)
-
-    // Bet.find_by(id: params[:bet_id])
-    console.log("odds:", bet[homeAway])
     const newWinnings = (bet[homeAway] > 0 ? ((bet[homeAway] * parseInt(e.target.value))/100) : (((parseInt(e.target.value)*100)/bet[homeAway])* -1))
     setWinnings(newWinnings)
-  }
-
-  const handleChoose =(e)=>{
-    alert("You must choose a bet to wager!")
   }
 
   const handleSubmit = (e) => {
@@ -68,12 +44,12 @@ function Bets({bet, home, away, odds}){
         fetch("/betslips",{
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(wagerForm),
+          body: JSON.stringify({wager:parseInt(amount), winnings:winnings, bet_id:bet.id}),
         }).then((r) =>{
           if (r.ok) {
-            r.json().then((err)=>alert(err.errors))
+            r.json().then(()=>alert("You placed a wager!"))
           } else {
-            r.json().then((err) => setErrors(err.errors));
+            r.json().then((err) => alert(err.errors));
           }
         })
       }else{
@@ -87,7 +63,7 @@ function Bets({bet, home, away, odds}){
       <div>{bet.date}</div>
       <button onClick={handleClick} name="home" style={homeAway === 'home_odds' ? {backgroundColor: "green"} : null}>{bet.home_team}<br/>{bet.home_odds}</button>
       <button onClick={handleClick} name="away" style={homeAway === 'away_odds' ? {backgroundColor: "green"} : null}>{bet.away_team}<br/>{bet.away_odds}</button>
-      {toggleForm ? <BetForm handleSubmit={handleSubmit} amount={amount} homeAway={homeAway} pseudoBackend={pseudoBackend} handleChoose={handleChoose} winnings={winnings} errors={errors} bet={bet}/> : false}
+      {toggleForm ? <BetForm handleSubmit={handleSubmit} amount={amount} errors={errors} pseudoBackend={pseudoBackend} winnings={winnings} bet={bet}/> : false}
     </div>
   )
 }

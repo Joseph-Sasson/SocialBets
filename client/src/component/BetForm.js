@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BetForm({handleSubmit, amount, homeAway, pseudoBackend, handleChoose, winnings, errors, bet}){
+function BetForm({handleSubmit, amount, pseudoBackend, winnings, bet, errors}){
 
   return (
     <>
@@ -12,7 +12,7 @@ function BetForm({handleSubmit, amount, homeAway, pseudoBackend, handleChoose, w
           placeholder="Enter bet amount"
           name="wager"
           value={amount}
-          onChange={homeAway ? pseudoBackend : handleChoose}
+          onChange={pseudoBackend}
         /></label>
       </form>
       <form onSubmit={(e) => handleSubmit(e, bet)}>
