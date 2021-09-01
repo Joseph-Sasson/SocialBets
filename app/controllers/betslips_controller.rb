@@ -22,6 +22,6 @@ class BetslipsController < ApplicationController
     params.permit(:wager, :winnings)
   end
   def authorize
-    render json: {errors: "Not authorized"}, status: :unauthorized unless session.include? :user_id
+    render json: {errors: "You must be logged in to place a bet!"}, status: :unauthorized unless session.include? :user_id
   end
 end

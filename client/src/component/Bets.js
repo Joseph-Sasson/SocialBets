@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import "../css/bets.css"
 
-function Bets({bet, home, away, user}){
+function Bets({bet, home, away}){
   const [errors, setErrors] = useState([]);
   const [wagerForm, setWagerForm] = useState({
-    user: user.id,
     bet: bet.id,
     wager: "",
     winnings: ""
