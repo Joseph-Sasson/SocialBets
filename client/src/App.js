@@ -93,7 +93,7 @@ function App() {
                 />
                 <Route 
                   path="/"
-                  component={() => <Login setUser={setUser} />}
+                  component={() => (<Home home={mustLogin} away={mustLogin} />)}
                 />
               </Switch>
             </div>

@@ -59,8 +59,7 @@ function Bets({bet, home, away}){
           min="0"
           placeholder="Enter winning amount"
           name="winnings"
-          value={wagerForm.winnings}
-          onChange={handleChange}
+          value={wagerForm.wager}
         /></label>
       <br/>
       <input type='submit' />
