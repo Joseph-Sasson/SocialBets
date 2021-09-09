@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import "../css/betslip.css"
 import Betslip from './Betslip';
 
-function MyBets(){
+function MyBets({user}){
   const [betslips, setBetslips] = useState([])
 
   useEffect(()=>{
@@ -13,7 +13,8 @@ function MyBets(){
 
   return (
     <div className="row">
-      {betslips.map(betslip=>{return <Betslip key={betslip.id} betslip={betslip}/>})}
+      {betslips.filter((betslip=>betslip.user.id === user.id))
+      .map(betslip=>{return <Betslip key={betslip.id} betslip={betslip}/>})}
     </div>
   )
 }

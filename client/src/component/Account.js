@@ -16,17 +16,28 @@ function Account({user, setUser}){
           setUser(null)
     }})};
 
-  const handleDeposit=()=>{
+  const handleDeposit=(e)=>{
     if (window.confirm("Are you sure you want to deposit money?"))
     fetch(`/deposit/${user.id}`, {
       method: 'PATCH',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({amount})
-    }).then((r)=>r.json())
+    }).then((r)=>{r.json()
     .then(setUser)
+    fetch('/bank_transactions',{
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({amount, transaction_type: e.target.name})
+    }).then((r) =>{
+      if (r.ok) {
+        r.json().then(()=>alert("Deposit complete!"))
+      } else {
+        r.json().then((err) => alert(err.errors));
+      }
+    })})
   }
 
-  const handleWithdraw=()=>{
+  const handleWithdraw=(e)=>{
     if (window.confirm("Are you sure you want to withdraw money?"))
     fetch(`/withdraw/${user.id}`, {
       method: 'PATCH',
@@ -35,6 +46,17 @@ function Account({user, setUser}){
     }).then((r) => {
       if (r.ok) {
         r.json().then(setUser)
+        fetch('/bank_transactions',{
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({amount, transaction_type: e.target.name})
+        }).then((r) =>{
+          if (r.ok) {
+            r.json().then(()=>alert("Withdraw complete!"))
+          } else {
+            r.json().then((err) => alert(err.errors));
+          }
+        })
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -64,7 +86,7 @@ function Account({user, setUser}){
       </ul>
       <button onClick={handleDelete}>Delete Account</button>
       <button onClick={showBank}>{toggleBank ? "Hide Bank History" : "Show Bank History"}</button>
-      {toggleBank ? transactions.map(transaction=>{return <BankHistory key={transaction.id} transaction={transaction} />}) : false}
+      {toggleBank ? transactions.filter(transaction=>transaction.user.id === user.id).map(transaction=>{return <BankHistory key={transaction.id} transaction={transaction} />}) : false}
     </div>
   )
 }

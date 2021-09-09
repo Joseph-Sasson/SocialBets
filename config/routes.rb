@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
-  resources :bank_histories, only: [:index, :create]
   resources :bank_transactions, only: [:index, :create]
-  resources :messages
-  resources :messengers
   resources :betslips, only: [:index, :create]
   resources :bets, only: [:index]
   resources :users
+  # resources :messages
+  # resources :messengers
+  # resources :bank_histories, only: [:index, :create]
 
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

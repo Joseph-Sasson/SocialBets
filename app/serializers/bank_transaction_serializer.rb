@@ -1,7 +1,9 @@
 class BankTransactionSerializer < ActiveModel::Serializer
-  attributes :id, :date, :amount, :transaction_type
+  attributes :id, :amount, :transaction_type, :bank_time
+  has_one :user
 
-  # def date
-  #   date.strftime("%A, %d %b %Y %l:%M %p")
-  # end
+  def bank_time
+    date = object.created_at
+    date.strftime("%A, %d %b %Y %l:%M %p")
+  end
 end

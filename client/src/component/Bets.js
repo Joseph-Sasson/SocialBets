@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "../css/bets.css"
 import BetForm from './BetForm';
 
-function Bets({bet, home, away}){
+function Bets({bet, home, away, user, setUser}){
   const [toggleForm, setToggleForm] = useState(false)
   const [homeAway, setHomeAway] = useState([])
   const [errors, setErrors] = useState([]);
@@ -10,6 +10,7 @@ function Bets({bet, home, away}){
   const [amount, setAmount] = useState('')
 
   const handleClick = (e) =>{
+    if (user){
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
       home(bet)
       setHomeAway("home_odds")
@@ -28,7 +29,7 @@ function Bets({bet, home, away}){
       setHomeAway('')
       setToggleForm(!toggleForm)
     }
-  }
+  }}
 
   const pseudoBackend = async (e) => {
     setAmount(e.target.value)
@@ -41,13 +42,24 @@ function Bets({bet, home, away}){
     setErrors([]);
     if (homeAway === 'home_odds' || homeAway === 'away_odds'){
       if (window.confirm("Are you sure you want to place this bet?"))
-        fetch("/betslips",{
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({wager:parseInt(amount), winnings:winnings, bet_id:bet.id}),
+      fetch(`/withdraw/${user.id}`,{
+        method: "PATCH",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({amount:parseInt(amount)})
         }).then((r) =>{
           if (r.ok) {
-            r.json().then(()=>alert("You placed a wager!"))
+            r.json().then(setUser)
+            fetch("/betslips",{
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({wager:parseInt(amount), winnings:winnings, bet_id:bet.id})
+            }).then((r) =>{
+              if (r.ok) {
+                r.json().then(()=>alert("You placed a wager!"))
+              } else {
+                r.json().then((err) => alert(err.errors));
+              }
+            })
           } else {
             r.json().then((err) => alert(err.errors));
           }

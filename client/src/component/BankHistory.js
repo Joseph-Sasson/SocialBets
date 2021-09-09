@@ -6,11 +6,11 @@ function BankHistory({transaction}){
   return (
     <div className='row'>
       <div className='card'>
-        {transaction.transaction_type}
+        Transaction Type: {transaction.transaction_type}
         <br/>
         Amount: ${transaction.amount}
         <br/>
-        Date: {transaction.date}
+        Transaction Date: {transaction.bank_time}
       </div>
     </div>
   )

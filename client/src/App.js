@@ -138,11 +138,11 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} setUser={setUser} />)}
               />
               <Route
                 path="/mybets"
-                component={() => (<MyBets />)}
+                component={() => (<MyBets user={user} />)}
               />
               <Route
                 path="/account"
@@ -150,7 +150,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip}  />)}
+                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} setUser={setUser} />)}
               />
             </Switch>
           </div>
