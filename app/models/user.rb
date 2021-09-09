@@ -7,8 +7,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :messengers, through: :messages
 
-  has_many :bank_histories
-  has_many :bank_transactions, through: :bank_histories
+  has_many :bank_transactions
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true

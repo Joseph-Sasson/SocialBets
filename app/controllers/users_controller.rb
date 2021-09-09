@@ -42,14 +42,14 @@ class UsersController < ApplicationController
 
   def deposit
     user = User.find(params[:id])
-    user.bank = user.bank + params[:_json].to_i
+    user.bank = user.bank + params[:amount].to_i
     user.save
     render json: user, status: :accepted
   end
 
   def withdraw
     user = User.find(params[:id])
-    user.bank = user.bank - params[:_json].to_i
+    user.bank = user.bank - params[:amount].to_i
     if user.bank < 0
       render json: {errors: "You dont have enough money to withdraw!"}, status: :unauthorized
     elsif user.bank >= 0

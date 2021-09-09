@@ -1,3 +1,3 @@
 class BankTransaction < ApplicationRecord
-  has :user, through: :bank_history
+  belongs_to :user
 end

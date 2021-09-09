@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :bank_histories
-  resources :bank_transactions
+  resources :bank_histories, only: [:index, :create]
+  resources :bank_transactions, only: [:index, :create]
   resources :messages
   resources :messengers
   resources :betslips, only: [:index, :create]

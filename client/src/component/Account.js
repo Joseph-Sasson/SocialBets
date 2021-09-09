@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import BankHistory from './BankHistory';
 
 function Account({user, setUser}){
   const [amount, setAmount] = useState(0)
   const [errors, setErrors] = useState([]);
+  const [transactions, setTransactions] = useState([])
+  const [toggleBank, setToggleBank] = useState(false)
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this account?"))
@@ -13,28 +16,39 @@ function Account({user, setUser}){
           setUser(null)
     }})};
 
-    const handleDeposit=()=>{
-      fetch(`/deposit/${user.id}`, {
-        method: 'PATCH',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(amount)
-      }).then((r)=>r.json())
-      .then(setUser)
-    }
+  const handleDeposit=()=>{
+    if (window.confirm("Are you sure you want to deposit money?"))
+    fetch(`/deposit/${user.id}`, {
+      method: 'PATCH',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({amount})
+    }).then((r)=>r.json())
+    .then(setUser)
+  }
 
-    const handleWithdraw=()=>{
-      fetch(`/withdraw/${user.id}`, {
-        method: 'PATCH',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(amount)
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then(setUser)
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-}
+  const handleWithdraw=()=>{
+    if (window.confirm("Are you sure you want to withdraw money?"))
+    fetch(`/withdraw/${user.id}`, {
+      method: 'PATCH',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({amount})
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(setUser)
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    })}
+
+  useEffect(()=>{
+    fetch('/bank_transactions')
+    .then((res)=>res.json())
+    .then(setTransactions)
+  }, [])
+
+  const showBank = ()=>{
+    setToggleBank(!toggleBank)
+  }
 
   return (
     <div>
@@ -44,11 +58,13 @@ function Account({user, setUser}){
         <li>Email Address: {user.email}</li>
         <li>Bank: ${parseInt(user.bank)}</li>
         <input onChange={(e)=>setAmount(e.target.value)} type="number" min="0"/>
-        <button onClick={handleDeposit}>Deposit</button>
-        <button onClick={handleWithdraw}>Withdraw</button>
+        <button onClick={handleDeposit} name="Deposit">Deposit</button>
+        <button onClick={handleWithdraw} name="Withdraw">Withdraw</button>
         <div>{errors}</div>
       </ul>
       <button onClick={handleDelete}>Delete Account</button>
+      <button onClick={showBank}>{toggleBank ? "Hide Bank History" : "Show Bank History"}</button>
+      {toggleBank ? transactions.map(transaction=>{return <BankHistory key={transaction.id} transaction={transaction} />}) : false}
     </div>
   )
 }

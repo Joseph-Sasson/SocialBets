@@ -10,16 +10,16 @@ SocialBets allows users to place bets on sports as well as chat with friends and
 * Users
 * Bets
 * Betslip
-* bank_history
 * bank_transaction
 
 ### MVP
-* User should be able to add bet to betslip
-* User should be able to add/remove money to/from bank
-* User should be able to check how much money is in the bank
 * User should be able to see available bets on home page
+* User should be able to check how much money is in the bank
+* User should be able to add bet to betslip
 * User should be able to see active and settled bets from betslip
+* User should be able to add/remove money to/from bank
 * User should be able to see bank transaction history
+* User bank should add when a bet is won
 
 ### Stretch goal
 * Add messenger to users to communicate with other users
@@ -32,8 +32,7 @@ SocialBets allows users to place bets on sports as well as chat with friends and
  * User
     * Has many betslips
     * Has many bets through betslips
-    * Has many bank histories
-    * Has many bank transactions through bank histories
+    * Has many bank transactions
  * Bets
     * Has many betslips
     * Has many users through betslips
@@ -41,10 +40,7 @@ SocialBets allows users to place bets on sports as well as chat with friends and
     * Belongs to user
     * Belongs to bet
  * Bank Transaction
-    * Has user through bank history
- * Bank history
     * Belongs to user
-    * Belongs to bank transaction
 
  ### Validations
  * User
