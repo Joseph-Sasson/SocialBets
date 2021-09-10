@@ -73,8 +73,8 @@ function Bets({bet, user, setUser}){
     <div className="card">
       <div>{bet.sports_title}</div>
       <div>{bet.date}</div>
-      <button onClick={handleClick} name="home" style={homeAway === 'home_odds' ? {backgroundColor: "green"} : null}>{bet.home_team}<br/>{bet.home_odds}</button>
-      <button onClick={handleClick} name="away" style={homeAway === 'away_odds' ? {backgroundColor: "green"} : null}>{bet.away_team}<br/>{bet.away_odds}</button>
+      <button onClick={handleClick} name="home" style={homeAway === 'home_odds' ? {backgroundColor: "lightskyblue", color: 'darkblue'} : null}>{bet.home_team}<br/>{bet.home_odds}</button>
+      <button onClick={handleClick} name="away" style={homeAway === 'away_odds' ? {backgroundColor: "lightskyblue", color: 'darkblue'} : null}>{bet.away_team}<br/>{bet.away_odds}</button>
       {toggleForm ? <BetForm handleSubmit={handleSubmit} amount={amount} errors={errors} pseudoBackend={pseudoBackend} winnings={winnings} bet={bet}/> : false}
     </div>
   )
