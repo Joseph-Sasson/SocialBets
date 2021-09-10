@@ -7,17 +7,23 @@ import Signup from "./component/Signup";
 import Home from "./component/Home";
 import Account from "./component/Account";
 import MyBets from "./component/MyBets";
+import Forum from "./component/Forum";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [messages, setMessages] = useState([])
   
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+    }})},[]);
+
+  useEffect(()=>{
+    fetch(`/messages`)
+    .then(r=>r.json())
+    .then(setMessages)
+  },[])
 
   function handleLogout() {
     if (window.confirm("Are you sure you want to logout?"))
@@ -25,8 +31,7 @@ function App() {
         if (r.ok) {
           setUser(null);
         }
-      });
-  }
+    })}
   
   if (!user) {
     return (
@@ -112,6 +117,11 @@ function App() {
                   </Link>
                 </li>
                 <li>
+                  <Link to={"/forum"}>
+                    Forum
+                  </Link>
+                </li>
+                <li>
                   <Link to={"/"} onClick={handleLogout}>
                     Logout
                   </Link>
@@ -135,6 +145,10 @@ function App() {
               <Route
                 path="/account"
                 component={() => (<Account user={user} setUser={setUser} />)}
+              />
+              <Route
+                path="/forum"
+                component={() => messages.map(message=>{return <Forum key={message.id} message={message} />})}
               />
               <Route
                 path="/"

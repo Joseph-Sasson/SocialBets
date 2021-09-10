@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :messenger
+
+  validates :message, :length => {minimum: 1}
 end

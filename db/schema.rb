@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_174637) do
+ActiveRecord::Schema.define(version: 2021_09_10_141409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +58,9 @@ ActiveRecord::Schema.define(version: 2021_09_09_174637) do
 
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "messenger_id", null: false
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["messenger_id"], name: "index_messages_on_messenger_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -87,6 +85,5 @@ ActiveRecord::Schema.define(version: 2021_09_09_174637) do
   add_foreign_key "bank_transactions", "users"
   add_foreign_key "betslips", "bets"
   add_foreign_key "betslips", "users"
-  add_foreign_key "messages", "messengers"
   add_foreign_key "messages", "users"
 end

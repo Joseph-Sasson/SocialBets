@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :bets, through: :betslips
 
   has_many :messages
-  has_many :messengers, through: :messages
 
   has_many :bank_transactions
 
