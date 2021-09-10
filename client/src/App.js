@@ -27,18 +27,6 @@ function App() {
         }
       });
   }
-
-  const addHomeToSlip =(bet)=>{
-    // console.log(bet)
-  }
-
-  const addAwayToSlip =(bet)=>{
-    // console.log(bet)
-  }
-
-  const mustLogin =()=>{
-    alert("You must be logged in to place a bet!")
-  }
   
   if (!user) {
     return (
@@ -76,7 +64,7 @@ function App() {
               <Switch>
                 <Route
                   path="/home"
-                  component={() => (<Home home={mustLogin} away={mustLogin} />)}
+                  component={() => (<Home />)}
                 />
                 <Route
                   path="/login"
@@ -88,7 +76,7 @@ function App() {
                 />
                 <Route 
                   path="/"
-                  component={() => (<Home home={mustLogin} away={mustLogin} />)}
+                  component={() => (<Home />)}
                 />
               </Switch>
             </div>
@@ -138,7 +126,7 @@ function App() {
             <Switch>
               <Route
                 path="/home"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} setUser={setUser} />)}
+                component={() => (<Home user={user} setUser={setUser} />)}
               />
               <Route
                 path="/mybets"
@@ -150,7 +138,7 @@ function App() {
               />
               <Route
                 path="/"
-                component={() => (<Home home={addHomeToSlip} away={addAwayToSlip} user={user} setUser={setUser} />)}
+                component={() => (<Home user={user} setUser={setUser} />)}
               />
             </Switch>
           </div>

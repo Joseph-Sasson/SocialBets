@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "../css/bets.css"
 import BetForm from './BetForm';
 
-function Bets({bet, home, away, user, setUser}){
+function Bets({bet, user, setUser}){
   const [toggleForm, setToggleForm] = useState(false)
   const [homeAway, setHomeAway] = useState([])
   const [errors, setErrors] = useState([]);
@@ -14,14 +14,12 @@ function Bets({bet, home, away, user, setUser}){
       alert("You must be logged in to place a bet!")
     }else{
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
-      home(bet)
       setHomeAway("home_odds")
       setAmount('')
       if (toggleForm === false) {
         setToggleForm(true)
       }
     } else if ((e.target.name === 'away' && homeAway !== 'away_odds')) {
-      away(bet)
       setHomeAway("away_odds")
       setAmount('')
       if (toggleForm === false) {
