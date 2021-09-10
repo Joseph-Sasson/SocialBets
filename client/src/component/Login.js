@@ -27,6 +27,7 @@ function Login({ setUser }) {
   };
 
   return (
+    <div className = 'card'>
     <form onSubmit={handleLogin}>
       <h3>Login</h3>
       <div>
@@ -88,6 +89,7 @@ function Login({ setUser }) {
       <div>{errors}</div>
 
     </form>
+    </div>
   );
 }
 

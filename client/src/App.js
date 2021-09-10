@@ -34,22 +34,24 @@ function App() {
         <div>
           <nav>
             <div>
-              <Link to={"/"}>
-                SocialBets
-              </Link>
+            <span className="nav">
+            <Link to={"/"}>
+              SocialBets
+            </Link>
+            </span>
               <div>
-                <ul>
-                  <li>
+                <ul className="nav">
+                  <li className = 'navbar'>
                     <Link to={"/home"}>
                       Home
                     </Link>
                   </li>  
-                  <li>
+                  <li className = 'navbar'>
                     <Link to={"/login"}>
                       Login
                     </Link>
                   </li>
-                  <li>
+                  <li className = 'navbar'>
                     <Link to={"/signup"}>
                       Sign up
                     </Link>
@@ -91,27 +93,29 @@ function App() {
       <div>
         <nav>
           <div>
+            <span className="nav">
             <Link to={"/"}>
               SocialBets
             </Link>
+            </span>
             <div>
-              <ul>
-                <li>
+              <ul className="nav">
+                <li className = 'navbar'>
                   <Link to={"/home"}>
                     Home
                   </Link>
                 </li>
-                <li>
+                <li className = 'navbar'>
                   <Link to={"/mybets"}>
                     My Bets
                   </Link>
                 </li>
-                <li>
+                <li className = 'navbar'>
                   <Link to={"/account"}>
                     My Account
                   </Link>
                 </li>
-                <li>
+                <li className = 'navbar'>
                   <Link to={"/"} onClick={handleLogout}>
                     Logout
                   </Link>

@@ -44,6 +44,7 @@ function Signup({ setUser }) {
   };
 
   return (
+    <div className = 'card'>
     <form onSubmit={(e) => handleSubmit(e)}>
       <h3>Sign up</h3>
       <div>
@@ -95,6 +96,7 @@ function Signup({ setUser }) {
         ))}
       </div>
     </form>
+    </div>
   );
 }
 

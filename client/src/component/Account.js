@@ -73,7 +73,7 @@ function Account({user, setUser}){
   }
 
   return (
-    <div>
+    <div className = 'card'>
       <h2>My Account</h2>
       <ul>
         <li>Name: {user.name}</li>

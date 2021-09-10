@@ -1,0 +1,29 @@
+body{
+  background: url(https://cdn.wallpapersafari.com/43/72/TU68ho.jpg);
+}
+
+ul{
+  list-style-type: none;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: lightskyblue;
+}
+
+.navbar {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+
+.navbar:hover{
+  background-color: #111;
+}
