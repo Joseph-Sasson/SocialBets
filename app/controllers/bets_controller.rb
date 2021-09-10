@@ -11,7 +11,6 @@ class BetsController < ApplicationController
       bet.betslips.each do |betslip|
         if betslip.odds == 'home'
           betslip.winner = true
-          byebug
           betslip.user.bank = betslip.user.bank + betslip.wager + betslip.winnings
           betslip.save
         elsif betslip.odds == 'away'
