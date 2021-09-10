@@ -1,7 +1,7 @@
 puts "🌱 Seeding users..."
 
-test = User.create(name: "test", email: "test@test.com", password: "flatiron", password_confirmation: "flatiron")
-joseph = User.create(name: "joseph", email: "joseph@gmail.com", password: "flatiron", password_confirmation: "flatiron")
+test = User.create(name: "Test", email: "test@test.com", password: "flatiron", password_confirmation: "flatiron")
+joseph = User.create(name: "Joseph", email: "joseph@gmail.com", password: "flatiron", password_confirmation: "flatiron")
 
 puts "🌱 Seeding users..."
 

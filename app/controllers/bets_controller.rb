@@ -12,6 +12,7 @@ class BetsController < ApplicationController
         if betslip.odds == 'home'
           betslip.winner = true
           betslip.user.bank = betslip.user.bank + betslip.wager + betslip.winnings
+          betslip.user.save
           betslip.save
         elsif betslip.odds == 'away'
           betslip.winner = false
@@ -23,6 +24,7 @@ class BetsController < ApplicationController
           if betslip.odds == 'away'
             betslip.winner = true
             betslip.user.bank = betslip.user.bank + betslip.wager + betslip.winnings
+            betslip.user.save
             betslip.save
           elsif betslip.odds == 'home'
             betslip.winner = false
