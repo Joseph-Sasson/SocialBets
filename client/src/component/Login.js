@@ -85,9 +85,7 @@ function Login({ setUser }) {
       >
         {isLoading ? "Loading..." : "Login"}
       </button>
-       
       <div>{errors}</div>
-
     </form>
     </div>
   );
