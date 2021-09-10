@@ -16,7 +16,7 @@ function Betslip({betslip}){
     <div className="card">
       <div>{betslip.bet.sports_title}</div>
       <div>{betslip.bet.date}</div>
-      <div>{betslip.bet.home_team}&ensp;{betslip.bet.home_odds}</div>
+      <div><span>{betslip.odds === 'home' ? betslip.bet.home_team : betslip.bet.away_team }</span>&ensp;<span>{betslip.odds === 'home' ? betslip.bet.home_odds : betslip.bet.away_odds }</span></div>
       <div>Wager: ${parseInt(betslip.wager)}&emsp;To Win:${parseInt(betslip.winnings)}</div>
       <div>Total Return: ${parseInt(betslip.wager) + parseInt(betslip.winnings)}</div>
       {<div>Result:&ensp;{RenderResults()}</div>}

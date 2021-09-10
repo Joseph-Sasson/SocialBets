@@ -1,5 +1,5 @@
 class BetslipSerializer < ActiveModel::Serializer
-  attributes :id, :wager, :winnings, :winner, :bet_time
+  attributes :id, :wager, :winnings, :winner, :bet_time, :odds
   has_one :user
   has_one :bet
 

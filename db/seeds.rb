@@ -44,7 +44,7 @@ Bet.create(sports_title: "NFL Football", date: "Monday September 13th", home_tea
 
 puts "🌱 Seeding betslip..."
 
-Betslip.create(user_id: test.id, bet_id: one.id, wager: 100, winnings: 200)
-Betslip.create(user_id: test.id, bet_id: two.id, wager: 100, winnings: 150)
+Betslip.create(user_id: test.id, bet_id: one.id, wager: 100, winnings: 750, odds:'home')
+Betslip.create(user_id: test.id, bet_id: two.id, wager: 100, winnings: 170, odds:'away')
 
 puts "✅ Done seeding!" 
