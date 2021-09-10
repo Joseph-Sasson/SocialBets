@@ -8,6 +8,7 @@ function Bets({bet, user, setUser}){
   const [errors, setErrors] = useState([]);
   const [winnings, setWinnings] = useState('')
   const [amount, setAmount] = useState('')
+  const [odds, setOdds] = useState('')
 
   const handleClick = (e) =>{
     if (!user){
@@ -16,12 +17,14 @@ function Bets({bet, user, setUser}){
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
       setHomeAway("home_odds")
       setAmount('')
+      setOdds('home')
       if (toggleForm === false) {
         setToggleForm(true)
       }
     } else if ((e.target.name === 'away' && homeAway !== 'away_odds')) {
       setHomeAway("away_odds")
       setAmount('')
+      setOdds('away')
       if (toggleForm === false) {
         setToggleForm(true)
       }
@@ -52,7 +55,7 @@ function Bets({bet, user, setUser}){
             fetch("/betslips",{
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({wager:parseInt(amount), winnings:winnings, bet_id:bet.id})
+              body: JSON.stringify({wager:parseInt(amount), winnings:winnings, bet_id:bet.id, odds:odds})
             }).then((r) =>{
               if (r.ok) {
                 r.json().then(()=>alert("You placed a wager!"))

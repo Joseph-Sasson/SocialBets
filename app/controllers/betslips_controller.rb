@@ -22,7 +22,7 @@ class BetslipsController < ApplicationController
   private
 
   def betslip_params
-    params.permit(:wager, :winnings, :bet_id)
+    params.permit(:wager, :winnings, :bet_id, :odds)
   end
   def authorize
     render json: {errors: "You must be logged in to place a bet!"}, status: :unauthorized unless session.include? :user_id
