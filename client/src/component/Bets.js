@@ -10,7 +10,9 @@ function Bets({bet, home, away, user, setUser}){
   const [amount, setAmount] = useState('')
 
   const handleClick = (e) =>{
-    if (user){
+    if (!user){
+      alert("You must be logged in to place a bet!")
+    }else{
     if (e.target.name === 'home' && homeAway !== 'home_odds') {
       home(bet)
       setHomeAway("home_odds")
