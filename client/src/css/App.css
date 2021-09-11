@@ -2,28 +2,57 @@ body{
   background: url(https://cdn.wallpapersafari.com/43/72/TU68ho.jpg);
 }
 
-ul{
+/* ul{
   list-style-type: none;
-}
+} */
 
-.nav {
+.nav-container {
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: lightskyblue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
 }
 
 .navbar {
-  float: left;
-  display: block;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  background-color: lightskyblue;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+
+.navbar-links {
+  /* float: left; */
+  /* display: block; */
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
+.navbar-header {
+  /* float: center; */
+  /* display: block; */
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
+.navbar-logout {
+  /* float: right; */
+  /* display: block; */
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-.navbar:hover{
+.navbar-links:hover{
   background-color: #111;
 }

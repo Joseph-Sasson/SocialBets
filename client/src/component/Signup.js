@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/login.css"
 
 function Signup({ setUser }) {
   const [errors, setErrors] = useState([]);
