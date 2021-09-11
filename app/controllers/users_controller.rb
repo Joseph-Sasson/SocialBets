@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.bank = user.bank - params[:amount].to_i
     if user.bank < 0
-      render json: {errors: "You can only withdraw what you have in your bank!"}, status: :unauthorized
+      render json: {errors: "Please deposit more money!"}, status: :unauthorized
     elsif user.bank >= 0
       user.save
       render json: user, status: :accepted
