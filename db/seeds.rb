@@ -3,7 +3,7 @@ puts "🌱 Seeding users..."
 test = User.create(name: "Test", email: "test@test.com", password: "flatiron", password_confirmation: "flatiron")
 joseph = User.create(name: "Joseph", email: "joseph@gmail.com", password: "flatiron", password_confirmation: "flatiron")
 
-puts "🌱 Seeding users..."
+puts "🌱 Seeding bets..."
 
 one = Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Andy Murray", away_team: "Stefanos Tsitsipas", home_odds: 750, away_odds: -1250)
 two = Bet.create(sports_title: "US Open", date: "Monday August 30th", home_team: "Mikhail Kukushkin", away_team: "Pablo Andujar", home_odds: -200, away_odds: 170)
