@@ -17,8 +17,25 @@
   padding-left: 15px;
 }
 
-.bet-header {
+.bet-head {
   text-align: center;
-  background-color: lightskyblue;
-  /* display: inline-flex; */
+  background-color: skyblue;
+}
+
+.bet-header {
+  
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-button {
+  background-color: skyblue;
+  font-weight: bolder;
+  font-size: 15px;
+  width: 100px;
+  height: 40px;
 }

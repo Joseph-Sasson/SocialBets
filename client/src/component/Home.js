@@ -11,8 +11,10 @@ function Home({home, away, user, setUser}){
   },[])
 
   return (
-    <div className = 'home'>
-      <h2 className = 'bet-header'>Available Bets </h2>
+    <div>
+      <div className='bet-head'>
+        <h2 className = 'bet-header'>Available Bets </h2>
+      </div>
         <div className="row">
         {bets.map(bet=> {return <Bets key={bet.id} bet={bet} home={home} away={away} user={user} setUser={setUser} />})}
         </div>
