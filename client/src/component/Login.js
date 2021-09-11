@@ -55,8 +55,7 @@ function Login({ setUser }) {
               email: formData.email,
               password: e.target.value,
               rememberMe: formData.rememberMe,
-            });
-          }}
+            })}}
           type="password"
           placeholder="Enter password"
         />
