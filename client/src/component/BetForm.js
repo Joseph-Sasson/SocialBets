@@ -1,10 +1,10 @@
 import React from 'react';
 
-function BetForm({handleSubmit, amount, pseudoBackend, winnings, bet, errors}){
+function BetForm({handleSubmit, amount, pseudoBackend, winnings, errors}){
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e, bet)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>Wager:
         <input
           type="number"
@@ -15,7 +15,7 @@ function BetForm({handleSubmit, amount, pseudoBackend, winnings, bet, errors}){
           onChange={pseudoBackend}
         /></label>
       </form>
-      <form onSubmit={(e) => handleSubmit(e, bet)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>To Win:</label>
         <span>{amount ? winnings : " "}</span>
       <br/>
