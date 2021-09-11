@@ -12,9 +12,12 @@ function MyBets({user}){
   },[])
 
   return (
-    <div className="row">
-      {betslips.filter((betslip=>betslip.user.id === user.id))
-      .map(betslip=>{return <Betslip key={betslip.id} betslip={betslip}/>})}
+    <div>
+      <h2 className = 'bet-header'>Active & Settled Bets</h2>
+        <div className="row">
+          {betslips.filter((betslip=>betslip.user.id === user.id))
+          .map(betslip=>{return <Betslip key={betslip.id} betslip={betslip}/>})}
+       </div>
     </div>
   )
 }

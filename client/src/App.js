@@ -34,11 +34,11 @@ function App() {
         <div>
           <nav>
             <div>
-            <span className="nav">
+            <h3 className="nav">
             <Link to={"/"}>
               SocialBets
             </Link>
-            </span>
+            </h3>
               <div>
                 <ul className="nav">
                   <li className = 'navbar'>
@@ -93,11 +93,11 @@ function App() {
       <div>
         <nav>
           <div>
-            <span className="nav">
+            <h3 className="nav">
             <Link to={"/"}>
               SocialBets
             </Link>
-            </span>
+            </h3>
             <div>
               <ul className="nav">
                 <li className = 'navbar'>

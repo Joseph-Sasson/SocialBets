@@ -11,6 +11,7 @@ ul{
   padding: 0;
   overflow: hidden;
   background-color: lightskyblue;
+  display: inline-flex;
 }
 
 .navbar {
