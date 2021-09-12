@@ -48,7 +48,7 @@ function Signup({ setUser }) {
     <form onSubmit={(e) => handleSubmit(e)}>
       <h3>Sign up</h3>
       <div>
-        <label>Full name</label>
+        <label>Full name: </label>
         <input
           type="text"
           placeholder="Enter name"
@@ -58,7 +58,7 @@ function Signup({ setUser }) {
         />
       </div>
       <div>
-        <label>Email</label>
+        <label>Email Address: </label>
         <input
           type="email"
           placeholder="Enter email"
@@ -68,7 +68,7 @@ function Signup({ setUser }) {
         />
       </div>
       <div>
-        <label>Password</label>
+        <label>Password: </label>
         <input
           type="password"
           placeholder="Enter password"
@@ -78,7 +78,7 @@ function Signup({ setUser }) {
         />
       </div>
       <div>
-        <label>Password confirmation</label>{" "}
+        <label>Password Confirmation: </label>{" "}
         <input
           type="password"
           placeholder="Enter password"
