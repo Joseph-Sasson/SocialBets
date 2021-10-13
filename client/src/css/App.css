@@ -23,8 +23,10 @@ ul{
   text-decoration: none;
 }
 
-
-
 .navbar:hover{
   background-color: #111;
+}
+
+.cap {
+  text-transform: capitalize;
 }

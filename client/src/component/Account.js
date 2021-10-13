@@ -76,8 +76,8 @@ function Account({user, setUser}){
     <div className = 'card'>
       <h2>My Account</h2>
       <ul>
-        <li>Name: {user.name}</li>
-        <li>Email Address: {user.email}</li>
+        <li className = 'cap'>Name: {user.name}</li>
+        <li>Email Address: {user.email.charAt(0).toUpperCase() + user.email.slice(1)}</li>
         <li>Bank: ${parseInt(user.bank)}</li>
         <input onChange={(e)=>setAmount(e.target.value)} type="number" min="0"/>
         <button onClick={handleDeposit} name="Deposit">Deposit</button>
