@@ -88,7 +88,6 @@ function Account({user, setUser}){
       <button onClick={showBank}>{toggleBank ? "Hide Bank History" : "Show Bank History"}</button>
       {toggleBank ? transactions.filter(transaction=>transaction.user.id === user.id).map(transaction=>{return <BankHistory key={transaction.id} transaction={transaction} />}) : false}
     </div>
-  )
-}
+)}
 
 export default Account
